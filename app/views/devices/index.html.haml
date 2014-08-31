@@ -1,0 +1,15 @@
+%h1 Device#index
+%p Find me in app/views/device/index.html.haml
+
+%table
+  %tr
+    %th Name
+    %th Address 
+    %th State
+
+  - @devices.each do | device |
+    %tr
+      %td= device.name
+      %td= device.address
+      %td= device.state == 1 ? "on" : "off"
+      %td= button_to "Toggle", "/devices/#{device.id}/toggle", { :method => :post}
