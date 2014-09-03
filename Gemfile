@@ -8,8 +8,14 @@ gem 'activeresource', '~> 4.0.0'
 
 gem 'haml', '~> 4.0.5'
 gem 'haml-rails', '~> 0.5.3'
+gem 'faraday'
+
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
+
+gem "chartkick"
+gem 'whenever', :require => false
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

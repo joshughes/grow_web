@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   end
   resources :devices, concerns: :toggleable
 
+  get 'temperature/current' => 'temperature#show'
+  get 'temperature' => 'temperature#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
