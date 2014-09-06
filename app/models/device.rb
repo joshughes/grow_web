@@ -43,7 +43,6 @@ class Device < ActiveRecord::Base
   def server_json
     numeric_state = state ? 1:0
     json = { name: name, address: address, state: numeric_state }
-    #json[:id] = id unless self.new_record?
     json.to_json
   end
 end

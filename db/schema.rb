@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902024653) do
+ActiveRecord::Schema.define(version: 20140906011733) do
 
   create_table "devices", force: true do |t|
     t.string   "name"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 20140902024653) do
   create_table "temperature_readings", force: true do |t|
     t.decimal  "temperature", precision: 10, scale: 0
     t.decimal  "humidity",    precision: 10, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "triggers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

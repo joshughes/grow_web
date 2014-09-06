@@ -1,10 +1,28 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'webmock/minitest'
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  self.use_transactional_fixtures = true
+
+  def setup 
+    stub_request(:any, "arm:8080")
+    DatabaseCleaner.clean_with :truncation
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
+
+  def teardown 
+    DatabaseCleaner.clean
+  end
+
+  
+  def fake_devices_server_call
+    server_id = Device.count + 1
+    stub_request(:post, "http://arm:8080/devices.json").to_return(body: "{\"id\": #{server_id} }", status: 200 )
+    #FakeWeb.register_uri(:post, "http://arm:8080/devices.json", body: "{\"id\": #{server_id} }",  status: ["200", "OK"])
+  end
+
 end
