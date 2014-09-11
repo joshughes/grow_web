@@ -5,7 +5,7 @@ class CreateTriggers < ActiveRecord::Migration
       t.string  :type
       t.decimal :value
       t.boolean :state
-      t.has_one :device
+      t.integer :device_id
       t.timestamps
     end
   end

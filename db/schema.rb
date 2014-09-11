@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 20140906011733) do
   end
 
   create_table "triggers", force: true do |t|
+    t.string   "condition"
+    t.string   "type"
+    t.decimal  "value",      precision: 10, scale: 0
+    t.boolean  "state"
+    t.integer  "device_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

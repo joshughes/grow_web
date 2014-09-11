@@ -1,0 +1,5 @@
+take_temperature:
+  every:
+    - "300s"
+  class: "TemperatureTaker"
+  description: "Take the temperature every 5 minutes"

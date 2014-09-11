@@ -1,5 +1,7 @@
 
 class Device < ActiveRecord::Base
+  has_many :triggers
+
   validates :address, uniqueness: true, presence: true
   validates :name, presence: true
   validates :state, inclusion: [true, false]

@@ -34,8 +34,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',         group: :doc
 
+gem 'resque', '~> 1.25'
+gem 'resque-scheduler'
+
 group :test do 
   gem 'shoulda'
+  gem 'webmock'
 end
 
 group :test, :development do 
@@ -43,7 +47,6 @@ group :test, :development do
   gem 'byebug'
   gem 'spring'
   gem 'fakeweb', "~> 1.3"
-  gem 'webmock'
   gem 'database_cleaner', '~> 1.3.0'
 end
 

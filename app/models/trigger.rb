@@ -1,5 +1,5 @@
 class Trigger < ActiveRecord::Base
-  has_one :device 
+  belongs_to :device 
 
   CONDITIONS = %w{ > >= == < <= }
 
