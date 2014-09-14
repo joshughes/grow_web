@@ -1,10 +1,12 @@
 
 class Device < ActiveRecord::Base
-  has_many :triggers
+  has_many :triggers, dependent: :destroy
+  has_many :powerconsumptions
 
   validates :address, uniqueness: true, presence: true
   validates :name, presence: true
   validates :state, inclusion: [true, false]
+  validates :wattage, presence: true
 
   before_save :send_to_server
 

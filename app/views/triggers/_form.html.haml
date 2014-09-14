@@ -1,0 +1,28 @@
+= form_for @trigger, html: { class: "form form-horizontal trigger" } do |f|
+  .form-group
+    = f.label :reading_type, class: 'control-label'
+    .controls
+      = f.select :reading_type, options_for_select(['TemperatureReading','HumidityReading'],'TemperatureReading'), {}, {class: 'form-control', required: true}
+    = error_span(@trigger[:reading_type])
+  .form-group
+    = f.label :condition, class: 'control-label'
+    .controls
+      = f.select :condition, options_for_select(['>','>=','==','<=','<',], '=='), {}, {class: 'form-control', required: true}
+    = error_span(@trigger[:condition])
+  .form-group
+    = f.label :value, class: 'control-label'
+    .controls
+      = f.number_field :value, class: 'form-control', required: true
+    = error_span(@trigger[:value])
+  .form-group
+    = f.label :state, class: 'control-label'
+    .controls
+      = f.select :state, options_for_select([['On',true],['Off',false]], 'On'), {}, {class: 'form-control', required: true}
+    = error_span(@trigger[:state])
+  .form-group
+    = f.label :device_id, class: 'control-label'
+    .controls
+      = f.select :device_id, options_from_collection_for_select(Device.all, :id, :name), {}, { class: 'form-control', required: true}
+    = error_span(@trigger[:device_id])
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), triggers_path, :class => 'btn btn-default'

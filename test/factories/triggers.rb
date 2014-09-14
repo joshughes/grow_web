@@ -3,7 +3,7 @@ FactoryGirl.define do
     device { build (:device ) }
     condition "=="
     state false
-    type "Temperature"
+    reading_type "TemperatureReading"
     value 0
   end
 end

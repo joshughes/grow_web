@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :power_consumptions
+
   concern :toggleable do
     post 'toggle'
   end
   resources :devices, concerns: :toggleable
+  resources :triggers
 
   get 'temperature/current' => 'temperature#show'
   get 'temperature' => 'temperature#index'

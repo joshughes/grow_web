@@ -3,7 +3,7 @@ class Trigger < ActiveRecord::Base
 
   CONDITIONS = %w{ > >= == < <= }
 
-  validates_presence_of :device, :type, :value
+  validates_presence_of :device, :reading_type, :value
   validates :state, inclusion: [true, false]
   validates :condition, presence: true, inclusion: CONDITIONS
 

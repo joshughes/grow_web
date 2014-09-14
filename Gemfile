@@ -16,6 +16,8 @@ gem 'mysql2'
 gem "chartkick"
 gem 'whenever', :require => false
 
+gem "twitter-bootstrap-rails"
+gem "font-awesome-rails"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -37,16 +39,18 @@ gem 'sdoc', '~> 0.4.0',         group: :doc
 gem 'resque', '~> 1.25'
 gem 'resque-scheduler'
 
+gem 'formtastic', '~> 3.0.0'
+
 group :test do 
   gem 'shoulda'
   gem 'webmock'
+  gem 'timecop'
 end
 
 group :test, :development do 
   gem 'factory_girl_rails'
   gem 'byebug'
   gem 'spring'
-  gem 'fakeweb', "~> 1.3"
   gem 'database_cleaner', '~> 1.3.0'
 end
 

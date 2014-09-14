@@ -1,0 +1,2 @@
+class PowerConsumptionsController < ApplicationController
+end
