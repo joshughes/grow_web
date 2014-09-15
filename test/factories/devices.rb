@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:address) { |n| "P8#{n}" }
     sequence(:name)    { |n| "Test Device #{n}" }
     state true
+    wattage 10
     sequence(:id)
   end
 end

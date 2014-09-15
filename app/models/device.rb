@@ -9,6 +9,8 @@ class Device < ActiveRecord::Base
   validates :wattage, presence: true
 
   before_save :send_to_server
+  after_save :create_power_consumption,     if: :state?
+  after_update :update_power_consumption, unless: :state?
 
   def send_to_server 
     if self.new_record?
@@ -49,4 +51,14 @@ class Device < ActiveRecord::Base
     json = { name: name, address: address, state: numeric_state }
     json.to_json
   end
+
+  def create_power_consumption
+    PowerConsumption.create(device: self)
+  end
+
+  def update_power_consumption
+    power_consumption = PowerConsumption.where("device_id = ? AND power_consumed IS NULL", id ).first
+    power_consumption.update_power_consumption
+  end
+
 end

@@ -20,6 +20,19 @@ class DeviceTest < ActiveSupport::TestCase
     assert_equal count + 1, device.id
   end
 
+  test "create power consumption entry" do
+    device = FactoryGirl.create(:device, {state: true})
+    assert_equal PowerConsumption.last.device.id, device.id
+  end
+
+  test "update power consumption when state changes" do
+    device = FactoryGirl.create(:device, {state: true, created_at: (Time.current - 1.day)})
+    stub_request(:put, "http://arm:8080/devices/#{device.id}.json")
+    device.update_attribute(:state, false)
+    refute_nil PowerConsumption.last.cost 
+    refute_nil PowerConsumption.last.power_consumed
+  end
+
   test "update is sent to server" do 
     device = FactoryGirl.create(:device)
     stub_request(:put, "http://arm:8080/devices/#{device.id}.json")

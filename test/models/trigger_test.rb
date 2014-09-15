@@ -25,7 +25,7 @@ class TriggerTest < ActiveSupport::TestCase
   test "test trigger runs on temperature reading" do
     device  = FactoryGirl.create(:device,  {state: false})
     stub_request(:put, "http://arm:8080/devices/#{device.id}.json")
-    trigger = FactoryGirl.create(:trigger, { device: device, state: true, value: 10, condition: '<' } )
+    FactoryGirl.create(:trigger, { device: device, state: true, value: 10, condition: '<' } )
     FactoryGirl.create(:temperature_reading, { temperature: 9})
     device.reload
     assert device.state

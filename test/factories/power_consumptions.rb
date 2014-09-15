@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :power_consumption do
+    device { build (:device ) }
   end
 end
