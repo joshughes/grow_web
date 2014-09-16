@@ -8,6 +8,7 @@ gem 'activeresource', '~> 4.0.0'
 
 gem 'haml', '~> 4.0.5'
 gem 'haml-rails', '~> 0.5.3'
+gem 'simple_form'
 gem 'faraday'
 
 # Use sqlite3 as the database for Active Record
@@ -48,6 +49,7 @@ group :test do
 end
 
 group :test, :development do 
+  gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'byebug'
   gem 'spring'
