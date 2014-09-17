@@ -11,6 +11,7 @@ class DevicesController < ApplicationController
     if @device.save
       redirect_to @device
     else
+      flash[:error] = @device.errors.full_messages.to_sentence
       # This line overrides the default rendering behavior, which
       # would have been to render the "create" view.
       render "new"
@@ -58,6 +59,6 @@ class DevicesController < ApplicationController
     # since you'll be able to reuse the same permit list between create and update. Also, you
     # can specialize this method with per-user checking of permissible attributes.
     def device_params
-      params.require(:device).permit(:name, :address, :state)
+      params.require(:device).permit(:name, :address, :state, :wattage)
     end
 end

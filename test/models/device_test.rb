@@ -33,6 +33,15 @@ class DeviceTest < ActiveSupport::TestCase
     refute_nil PowerConsumption.last.power_consumed
   end
 
+  test "power consumption is not updated if state remains false" do
+    device = FactoryGirl.create(:device, {state: false, wattage: 1})
+    stub_request(:put, "http://arm:8080/devices/#{device.id}.json")
+    device.update_attributes({state: false, wattage: 10})
+    device.reload
+    assert_equal 10, device.wattage
+    assert_equal 0, PowerConsumption.all.count 
+  end
+
   test "update is sent to server" do 
     device = FactoryGirl.create(:device)
     stub_request(:put, "http://arm:8080/devices/#{device.id}.json")

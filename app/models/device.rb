@@ -58,7 +58,7 @@ class Device < ActiveRecord::Base
 
   def update_power_consumption
     power_consumption = PowerConsumption.where("device_id = ? AND power_consumed IS NULL", id ).first
-    power_consumption.update_power_consumption
+    power_consumption.update_power_consumption unless power_consumption.nil?
   end
 
 end

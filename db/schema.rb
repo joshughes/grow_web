@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20140914182724) do
 
   create_table "power_consumptions", force: true do |t|
     t.integer  "device_id"
-    t.decimal  "power_consumed", precision: 10, scale: 0
-    t.decimal  "cost",           precision: 8,  scale: 2
+    t.decimal  "power_consumed", precision: 10, scale: 5
+    t.decimal  "cost",           precision: 10, scale: 5
     t.datetime "created_at"
     t.datetime "updated_at"
   end

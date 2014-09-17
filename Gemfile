@@ -40,8 +40,6 @@ gem 'sdoc', '~> 0.4.0',         group: :doc
 gem 'resque', '~> 1.25'
 gem 'resque-scheduler'
 
-gem 'formtastic', '~> 3.0.0'
-
 group :test do 
   gem 'shoulda'
   gem 'webmock'
@@ -49,11 +47,15 @@ group :test do
 end
 
 group :test, :development do 
-  gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'byebug'
   gem 'spring'
   gem 'database_cleaner', '~> 1.3.0'
+end
+
+group :development do
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
 
 # Use ActiveModel has_secure_password

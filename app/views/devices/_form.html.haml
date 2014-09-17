@@ -1,18 +1,6 @@
-= form_for @device, html: { class: "form form-horizontal device" } do |f|
-  .form-group
-    = f.label :name, class: 'control-label'
-    .controls
-      = f.text_field :name, class: 'form-control', required: true
-    = error_span(@device[:name])
-  .form-group
-    = f.label :address, class: 'control-label'
-    .controls
-      = f.text_field :address, class: 'form-control', required: true
-    = error_span(@device[:address])
-  .form-group
-    = f.label :state, class: 'control-label'
-    .controls
-      = f.select :state, options_for_select([['On',true],['Off',false]], 'On'), {}, {class: 'form-control', required: true}
-    = error_span(@device[:state])
-  = f.submit nil,class: 'btn btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), devices_path, :class => 'btn btn-default'
+= simple_form_for(@device, html: {class: 'form form-horizontal device' }) do |form|
+  = form.input :name
+  = form.input :address
+  = form.input :wattage
+  = form.input :state, as: :boolean, checked_value: true, unchecked_value: false, inline_label: true, label: false
+  = form.button :submit, class: 'btn btn-primary'

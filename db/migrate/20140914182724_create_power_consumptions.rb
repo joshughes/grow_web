@@ -2,8 +2,8 @@ class CreatePowerConsumptions < ActiveRecord::Migration
   def change
     create_table :power_consumptions do |t|
       t.integer :device_id
-      t.decimal  :power_consumed
-      t.decimal  :cost, :precision => 8, :scale => 2
+      t.decimal  :power_consumed, :precision => 10, :scale => 5
+      t.decimal  :cost, :precision => 10, :scale => 5
       t.timestamps
     end
 
