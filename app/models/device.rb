@@ -53,11 +53,11 @@ class Device < ActiveRecord::Base
   end
 
   def create_power_consumption
-    PowerConsumption.create(device: self)
+    PowerConsumption.create(device_id: id)
   end
 
   def update_power_consumption
-    power_consumption = PowerConsumption.where("device_id = ? AND power_consumed IS NULL", id ).first
+    power_consumption = PowerConsumption.where(device_id: id).where(power_consumed: nil).first
     power_consumption.update_power_consumption unless power_consumption.nil?
   end
 

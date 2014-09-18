@@ -26,7 +26,10 @@ class DeviceTest < ActiveSupport::TestCase
   end
 
   test "update power consumption when state changes" do
-    device = FactoryGirl.create(:device, {state: true, created_at: (Time.current - 1.day)})
+    device = {}
+    Timecop.freeze(Time.current - 2.day ) do
+      device = FactoryGirl.create(:device, {state: true})
+    end
     stub_request(:put, "http://arm:8080/devices/#{device.id}.json")
     device.update_attribute(:state, false)
     refute_nil PowerConsumption.last.cost 

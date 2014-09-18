@@ -10,7 +10,7 @@ class ActiveSupport::TestCase
   def setup 
     Resque.inline = true
     WebMock.disable_net_connect!(:allow_localhost => true)
-    #DatabaseCleaner.clean_with :truncation
+    DatabaseCleaner.clean_with :truncation
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
   end

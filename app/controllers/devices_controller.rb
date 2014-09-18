@@ -12,8 +12,6 @@ class DevicesController < ApplicationController
       redirect_to @device
     else
       flash[:error] = @device.errors.full_messages.to_sentence
-      # This line overrides the default rendering behavior, which
-      # would have been to render the "create" view.
       render "new"
     end
   end
