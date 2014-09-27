@@ -4,11 +4,11 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 gem 'activeresource', '~> 4.0.0'
-
+gem 'unicorn-rails'
 
 gem 'haml', '~> 4.0.5'
 gem 'haml-rails', '~> 0.5.3'
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 gem 'faraday'
 
 # Use sqlite3 as the database for Active Record
@@ -17,9 +17,12 @@ gem 'mysql2'
 gem "chartkick"
 gem 'whenever', :require => false
 
-gem 'carrierwave'
+gem 'paperclip'
 
 gem "font-awesome-rails"
+
+gem 'bootstrap-sass'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

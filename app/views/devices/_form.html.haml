@@ -1,6 +1,7 @@
-= simple_form_for(@device, html: {class: 'form form-horizontal device' }) do |form|
+= simple_form_for @device, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes, file: :vertical_file_input, boolean: :vertical_boolean } do |form|
   = form.input :name
   = form.input :address
   = form.input :wattage
-  = form.input :state, as: :boolean, checked_value: true, unchecked_value: false, inline_label: true, label: false
+  = form.input :state,   checked_value: true, unchecked_value: false
+  = form.input :digital, checked_value: true, unchecked_value: false
   = form.button :submit, class: 'btn btn-primary'

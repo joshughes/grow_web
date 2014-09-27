@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914182724) do
+ActiveRecord::Schema.define(version: 20140921221534) do
 
   create_table "devices", force: true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140914182724) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "wattage",    precision: 10, scale: 0
+    t.boolean  "digital"
   end
 
   create_table "humidity_readings", force: true do |t|
@@ -32,6 +33,15 @@ ActiveRecord::Schema.define(version: 20140914182724) do
     t.integer  "device_id"
     t.decimal  "power_consumed", precision: 10, scale: 5
     t.decimal  "cost",           precision: 10, scale: 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "snapshots", force: true do |t|
+    t.string   "shot_file_name"
+    t.string   "shot_content_type"
+    t.integer  "shot_file_size"
+    t.datetime "shot_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -5,13 +5,12 @@ require 'webmock/minitest'
 
 class ActiveSupport::TestCase
 
-  self.use_transactional_fixtures = true
+  self.use_transactional_fixtures = false
 
   def setup 
     Resque.inline = true
     WebMock.disable_net_connect!(:allow_localhost => true)
-    DatabaseCleaner.clean_with :truncation
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
   end
 

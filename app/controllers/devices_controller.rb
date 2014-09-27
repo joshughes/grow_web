@@ -30,6 +30,8 @@ class DevicesController < ApplicationController
   end
 
   def destroy
+    Device.delete(params[:id])
+    redirect_to action: 'index'
   end
 
   def toggle

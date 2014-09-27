@@ -5,7 +5,8 @@ class Device < ActiveRecord::Base
 
   validates :address, uniqueness: true, presence: true
   validates :name, presence: true
-  validates :state, inclusion: [true, false]
+  validates :state,   inclusion: [true, false]
+  validates :digital, inclusion: [true, false], presence: true
   validates :wattage, presence: true
 
   before_save :send_to_server
@@ -48,7 +49,8 @@ class Device < ActiveRecord::Base
 
   def server_json
     numeric_state = state ? 1:0
-    json = { name: name, address: address, state: numeric_state }
+    device_type   = digital ? 'D' : 'A'
+    json = { name: name, address: address, state: numeric_state, type: device_type }
     json.to_json
   end
 
